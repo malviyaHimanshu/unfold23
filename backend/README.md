@@ -1,4 +1,4 @@
-# notion-clone backend
+# Canvas backend
 
 ### Endpoints
 

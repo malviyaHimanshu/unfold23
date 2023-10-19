@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Canvas Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Stack
 
-## Available Scripts
+I tried to keep the frontend stack as lean and precise as possible. Hopefully, that makes it easier to understand...
 
-In the project directory, you can run:
+The most important technologies / dependencies:
 
-### `npm start`
+- Next.js
+- Context API
+- CSS Modules with SASS
+- React-Contenteditable
+- React-Beautiful-Dnd
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Main Components
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### editablePage
 
-### `npm test`
+An editable page consists of several blocks. Each block has an unique ID as well as content data (html, tag, imageUrl). When a page gets requested, we fetch the blocks on the server and pass it (along with the page ID) to the editablePage component.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+All pre-fetched blocks are being stored in state. When the user modifies a block, the page gets updated and sends the update to the server as well. If we have multiple blocks and the user changes their order, we just update the block index inside the array.
 
-### `npm run build`
+Shape of `blocks`:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```json
+[
+  {
+    "_id": "5f54d75b114c6d176d7e9765",
+    "html": "Heading",
+    "tag": "h1",
+    "imageUrl": ""
+  }
+]
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### editableBlock
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+An editable block is a contenteditable element. It receives the content and html tag (or the imageUrl) from the page it is placed on. The tag determines the html element type (e.g. `"h1"` turns into `<h1>`) and thus its styling.
 
-### `npm run eject`
+The component essentially differentiates between text content and image content that gets passed into it. Receiving the `img` tag with an `imageUrl`, we render an image, receiving any other tag with `html`, we render a contenteditable container, respectively.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Any other state properties are being used to keep track of user inputs and the visibility of different type of menus.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+{
+  "html": "",
+  "tag": "p",
+  "imageUrl": "",
+  "placeholder": false,
+  "previousKey": null,
+  "isTyping": false,
+  "tagSelectorMenuOpen": false,
+  "tagSelectorMenuPosition": {
+    "x": null,
+    "y": null
+  },
+  "actionMenuOpen": false,
+  "actionMenuPosition": {
+    "x": null,
+    "y": null
+  }
+}
+```
