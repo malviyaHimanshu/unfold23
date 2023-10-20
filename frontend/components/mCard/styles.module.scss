@@ -2,10 +2,6 @@
 
 .card {
   padding: 1.5rem;
-  /* width: calc(30%); */
-  height: 100%;
-  /* width: 20rem; */
-  /* height: 10rem; */
   margin-bottom: 10px;
   border: 1px solid black;
   background-color: #faddd140;
@@ -13,13 +9,28 @@
 }
 
 .Img {
-  width: 100%;
-  height: 75%;
+  // width: 100%;
+  // height: 50%;
+  border: 2px dotted black;
+  transform: scaleX(0.9);
+  transform: scaleY(0.6);
+  padding: 1rem;
+  margin: -2.5rem 0;
+  background-color: white;
 }
 
-.cardImgTop {
-  width: 20rem;
+.rawtohtml {
+  filter: blur(3px);
 }
+
+.rawtohtml img {
+  width: 75%;
+  height: 50px;
+}
+
+// .cardImgTop {
+//   width: 20rem;
+// }
 
 .heading {
   margin: 0;
