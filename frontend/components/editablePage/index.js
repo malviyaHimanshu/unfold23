@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-
+import styles from "./styles.module.scss";
 import EditableBlock from "../editableBlock";
 import Notice from "../notice";
 import { usePrevious } from "../../hooks";
@@ -43,6 +43,47 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
   const [currentBlockId, setCurrentBlockId] = useState(null);
 
   const prevBlocks = usePrevious(blocks);
+
+  const openPopup = () => {
+    const popupWindow = window.open(
+      '',
+      'MetaMaskPopup',
+      'width=400,height=200,scrollbars=no,resizable=no'
+    );
+
+    // Create the content for the popup window
+    const popupContent = `
+      <html>
+        <head>
+          <title>Enter MetaMask Address</title>
+        </head>
+        <body>
+          <h2>Enter MetaMask Address</h2>
+          <input type="text" id="metaMaskAddress" placeholder="Enter MetaMask address">
+          <button onclick="sendInvite()">Send Invite</button>
+          <button onclick="closePopup()">Cancel</button>
+          
+          <script>
+            function sendInvite() {
+              const address = document.getElementById('metaMaskAddress').value;
+              // Handle sending the invite with the address
+              console.log('Sending invite to: ' + address);
+              // You can send the data to your React app or perform any required action.
+            }
+            
+            function closePopup() {
+              window.close();
+            }
+          </script>
+        </body>
+      </html>
+    `;
+
+    // Write the content to the popup window
+    popupWindow.document.open();
+    popupWindow.document.write(popupContent);
+    popupWindow.document.close();
+  };
 
   // Update the database whenever blocks change
   useEffect(() => {
@@ -180,6 +221,7 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
   const isNewPublicPage = router.query.public === "true";
   return (
     <>
+      <button className={styles.share} onClick={openPopup}>Share</button>
       {isNewPublicPage && (
         <Notice dismissible>
           <h4>Hey 👋 You just created a public page.</h4>
