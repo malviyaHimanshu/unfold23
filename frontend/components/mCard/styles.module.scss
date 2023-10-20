@@ -1,0 +1,45 @@
+@import "../../shared/variables.scss";
+
+.card {
+  padding: 1.5rem;
+  /* width: calc(30%); */
+  height: 100%;
+  /* width: 20rem; */
+  /* height: 10rem; */
+  margin-bottom: 10px;
+  border: 1px solid black;
+  background-color: #faddd140;
+  cursor: pointer;
+}
+
+.Img {
+  width: 100%;
+  height: 75%;
+}
+
+.cardImgTop {
+  width: 20rem;
+}
+
+.heading {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  p {
+    color: grey;
+    font-size: 1rem;
+    padding: 6px 0;
+    margin: 0;
+    /* padding: 2px 0; */
+  }
+  h5 {
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+    /* padding: 2px 0; */
+  }
+}
