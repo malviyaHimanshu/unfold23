@@ -30,6 +30,11 @@ const allowedTags = [
     tag: "img",
     label: "Image",
   },
+  {
+    id: "calendar",
+    tag: "cal",
+    label: "Calendar",
+  },
 ];
 
 const TagSelectorMenu = ({ position, closeMenu, handleSelection }) => {
