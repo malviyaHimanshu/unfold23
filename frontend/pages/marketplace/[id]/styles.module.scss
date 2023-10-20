@@ -1,0 +1,48 @@
+@import "../../../shared/variables.scss";
+
+.main {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 2rem;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  height: 90%;
+  background-color: $cardColor2;
+  color: $text;
+}
+
+.cardPreview {
+  width: 50%;
+  height: 100%;
+  overflow-y: auto;
+  //   border: 2px solid black;
+
+  img {
+    width: 90%;
+    height: 15rem;
+  }
+}
+
+.cardDetails {
+  width: 50%;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buy {
+  padding: 1.5rem 2rem;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 0.2s all;
+  background-color: $text;
+  color: white;
+}
+
+.buy:hover {
+  background-color: white;
+  color: black;
+}
