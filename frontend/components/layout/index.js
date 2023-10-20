@@ -45,6 +45,7 @@ const Layout = ({ children }) => {
           </a>
         </div>
         <nav className={styles.nav}>
+          <a href="/marketplace">Marketplace</a>
           {!isLoginPage && !isAuth && <Button href="/login">Connect Wallet</Button>}
           {!isLoginPage && isAuth && (
             <div className={styles.user}>
