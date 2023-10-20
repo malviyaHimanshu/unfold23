@@ -17,46 +17,19 @@ const Layout = ({ children }) => {
   const router = useRouter();
   const state = useContext(UserStateContext);
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
+
+  const [showPopup, setShowPopup] = useState(false);
+
   const openPopup = () => {
-    const popupWindow = window.open(
-      '',
-      'MetaMaskPopup',
-      'width=400,height=200,scrollbars=no,resizable=no'
-    );
-
-    // Create the content for the popup window
-    const popupContent = `
-      <html>
-        <head>
-          <title>Enter MetaMask Address</title>
-        </head>
-        <body>
-          <h2>Enter MetaMask Address</h2>
-          <input type="text" id="metaMaskAddress" placeholder="Enter MetaMask address">
-          <button onclick="sendInvite()">Send Invite</button>
-          <button onclick="closePopup()">Cancel</button>
-          
-          <script>
-            function sendInvite() {
-              const address = document.getElementById('metaMaskAddress').value;
-              // Handle sending the invite with the address
-              console.log('Sending invite to: ' + address);
-              // You can send the data to your React app or perform any required action.
-            }
-            
-            function closePopup() {
-              window.close();
-            }
-          </script>
-        </body>
-      </html>
-    `;
-
-    // Write the content to the popup window
-    popupWindow.document.open();
-    popupWindow.document.write(popupContent);
-    popupWindow.document.close();
+    setShowPopup(true);
   };
+  const closePopup = () => {
+    setShowPopup(false);
+  }
+
+  const sendInvite = () => {
+    // send invite
+  }
 
   const isLoginPage = router.pathname === "/login";
   const isAuth = state.isAuth;
@@ -81,6 +54,20 @@ const Layout = ({ children }) => {
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
+
+      { showPopup && (
+        <div className={styles.sharePopupBg} style={{position: 'fixed', height: '100vh', width: '100vw', top: 0, right: 0, left: 0, bottom: 0, display: "grid", placeContent: 'center'}}>
+          <div className={styles.popup}>
+            <h2>Enter Account Address</h2>
+            <input type="text" id="metaMaskAddress" placeholder="0xDef03x.....3sd90" />
+
+            <div className={styles.buttons}>
+              <button className={styles.send} onClick={sendInvite}>Send Invite</button>
+              <button className={styles.cancel} onClick={closePopup}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <header className={styles.headerBar}>
         <div className={styles.logo}>
@@ -225,7 +212,7 @@ const Layout = ({ children }) => {
           )}
         </nav>
       </header>
-      <button className="flex align-right" onClick={openPopup}>Share</button>
+
       <main className={styles.content}>{children}</main>
       {/* <footer className={styles.footerBar}>
         <hr className={styles.hr} />
