@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 const imgSrc =
   "https://unsplash.com/photos/a-video-game-controller-flying-through-the-air-B6oBCNG7IK4";
 
-import a from "../../../components/mCard/sheeryImage.png";
+// import a from "../../../components/mCard/sheeryImage.png";
 
 const CardDetail = () => {
   return (
@@ -15,7 +15,7 @@ const CardDetail = () => {
           <h1>This is page title</h1>
           <h2>This is heading</h2>
           <h3>This is subheading</h3>
-          <img src={a} alt="" />
+          {/* <img src={a} alt="" /> */}
           <p>This is paragraph</p>
           <p></p>
         </div>
