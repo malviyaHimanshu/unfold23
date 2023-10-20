@@ -2,7 +2,7 @@
 
 .menuWrapper {
   position: absolute;
-  width: 6.875rem;
+  width: 8rem;
   height: 9rem;
   z-index: 11;
   display: flex;
@@ -12,7 +12,7 @@
 .menu {
   background: white;
   box-shadow: $box-shadow;
-  border-radius: 0.5rem;
+  // border-radius: 0.5rem;
 }
 
 .item {
