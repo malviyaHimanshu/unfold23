@@ -56,6 +56,7 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
             blocks: blocks,
           }),
         });
+        console.log("these are blocks: ", blocks);
       } catch (err) {
         console.log(err);
       }

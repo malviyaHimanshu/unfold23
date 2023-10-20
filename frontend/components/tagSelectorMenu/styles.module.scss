@@ -33,19 +33,19 @@
   cursor: pointer;
 }
 
-.item:first-of-type:hover,
-.item:first-of-type:focus {
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
-}
+// .item:first-of-type:hover,
+// .item:first-of-type:focus {
+//   border-top-right-radius: 0.5rem;
+//   border-top-left-radius: 0.5rem;
+// }
 
-.item:last-of-type:hover,
-.item:last-of-type:focus {
-  border-bottom-right-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-}
+// .item:last-of-type:hover,
+// .item:last-of-type:focus {
+//   border-bottom-right-radius: 0.5rem;
+//   border-bottom-left-radius: 0.5rem;
+// }
 
 .selectedTag {
   background: $tertiary;
-  border-radius: .5rem;
+  // border-radius: .5rem;
 }

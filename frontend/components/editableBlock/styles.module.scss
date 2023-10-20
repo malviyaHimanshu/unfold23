@@ -10,8 +10,8 @@
 .block:focus,
 .isDragging,
 .blockSelected {
-  background: $tertiary;
-  outline-color: $tertiary;
+  background: #f4f3ef;
+  outline-color: #e9e8e2;
   & ~ .dragHandle {
     opacity: 1;
   }
@@ -28,7 +28,7 @@
 
 .draggable:hover {
   .block {
-    background: #fafafa;
+    background: #e9e8e2;
     outline-color: $tertiary;
   }
   .dragHandle {

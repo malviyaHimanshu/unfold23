@@ -34,18 +34,18 @@ const Layout = ({ children }) => {
   return (
     <div id="layoutRoot">
       <Head>
-        <title>Notion Clone</title>
+        <title>Canvas</title>
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
       <header className={styles.headerBar}>
         <div className={styles.logo}>
           <a href="/" role="link" tabIndex="0">
-            notion<span style={{ fontSize: "1.25rem" }}>.clone</span>
+            Canvas
           </a>
         </div>
         <nav className={styles.nav}>
-          {!isLoginPage && !isAuth && <Button href="/login">Login</Button>}
+          {!isLoginPage && !isAuth && <Button href="/login">Connect Wallet</Button>}
           {!isLoginPage && isAuth && (
             <div className={styles.user}>
               <span
@@ -83,7 +83,7 @@ const Layout = ({ children }) => {
         </nav>
       </header>
       <main className={styles.content}>{children}</main>
-      <footer className={styles.footerBar}>
+      {/* <footer className={styles.footerBar}>
         <hr className={styles.hr} />
         <div className={styles.github}>
           <a
@@ -95,7 +95,7 @@ const Layout = ({ children }) => {
             <img src={GithubIcon} alt="Github Icon" />
           </a>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };
