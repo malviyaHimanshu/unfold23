@@ -1,23 +1,25 @@
 @import "../../shared/variables.scss";
 
 .headerBar {
-  width: calc(100% - 2rem);
-  max-width: $max-width;
-  padding: 1rem;
-  margin: 1rem;
+  width: 100%;
+  height: 80px;
+  border-bottom: solid 1px $primary;
+  // border-width: 1px 0 1px 0;
+  // max-width: $max-width;
   background: $secondary;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-radius: 0.5rem;
+  // border-radius: 0.5rem;
 }
 
 .logo {
   font-family: $accent;
   font-size: 1.5rem;
   color: $primary;
-  font-weight: 700;
+  padding: 1rem 2rem;
+  font-weight: 600;
 }
 
 .content {

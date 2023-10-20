@@ -3,9 +3,12 @@
 .button {
     display: inline-block;
     width: auto;
-    min-width: 5rem;
-    padding: .4rem 1rem;
-    border-radius: .5rem;
+    height: 80px;
+    display: grid;
+    place-content: center;
+    padding: 1rem 2rem;
+    min-width: 7rem;
+    // border-radius: .5rem;
     text-align: center;
     background: $primary;
     color: white;
