@@ -1,0 +1,18 @@
+/* styles.css */
+.button-style {
+    position: absolute;
+    top: 0;
+    left: 75%;
+    transform: translateX(-50%);
+    background-color: rgb(215, 227, 231);
+    color: rgb(0, 0, 0);
+    border: 0px;
+    margin: 3px 0;
+    padding: 10px 20px;
+    z-index: 9999;
+    cursor: pointer;
+  }
+
+  .button-style:hover{
+    background-color: rgb(222, 222, 243);
+  }
