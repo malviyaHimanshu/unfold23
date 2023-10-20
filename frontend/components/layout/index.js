@@ -10,6 +10,9 @@ import styles from "./styles.module.scss";
 import GithubIcon from "../../images/github.svg";
 import UserIcon from "../../images/user.svg";
 
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+
 const Layout = ({ children }) => {
   const router = useRouter();
   const state = useContext(UserStateContext);
@@ -45,8 +48,105 @@ const Layout = ({ children }) => {
           </a>
         </div>
         <nav className={styles.nav}>
-          <a href="/marketplace">Marketplace</a>
-          {!isLoginPage && !isAuth && <Button href="/login">Connect Wallet</Button>}
+          <a href="/marketplace" style={{fontWeight: '700', textDecoration: 'underline'}}>Marketplace</a>
+          {/* <ConnectButton showBalance={true} /> */}
+
+
+
+          <ConnectButton.Custom>
+            {({
+              account,
+              chain,
+              openAccountModal,
+              openChainModal,
+              openConnectModal,
+              authenticationStatus,
+              mounted,
+            }) => {
+              // Note: If your app doesn't use authentication, you
+              // can remove all 'authenticationStatus' checks
+              const ready = mounted && authenticationStatus !== 'loading';
+              const connected =
+                ready &&
+                account &&
+                chain &&
+                (!authenticationStatus ||
+                  authenticationStatus === 'authenticated');
+
+              return (
+                <div
+                  {...(!ready && {
+                    'aria-hidden': true,
+                    'style': {
+                      opacity: 0,
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                    },
+                  })}
+                >
+                  {(() => {
+                    if (!connected) {
+                      return (
+                        <div onClick={openConnectModal} style={{cursor: 'pointer'}}>
+                          <Button>Connect Wallet</Button>
+                        </div>
+                      );
+                    }
+
+                    if (chain.unsupported) {
+                      return (
+                        <button onClick={openChainModal} type="button">
+                          Wrong network
+                        </button>
+                      );
+                    }
+
+                    return (
+                      <div style={{ display: 'flex', gap: 0}}>
+                        <button onClick={openChainModal} className="chain-button" style={{ display: 'flex', alignItems: 'center', background: 'none', padding: '0 2rem', border: 'solid 1px #303030', borderTop: 'none', borderBottom: 'none', fontFamily: "'JetBrains Mono', monospace", fontWeight: '700', fontSize: '16px' }}>
+                          {chain.hasIcon && (
+                            <div
+                              style={{
+                                background: chain.iconBackground,
+                                width: 12,
+                                height: 12,
+                                borderRadius: 999,
+                                overflow: 'hidden',
+                                marginRight: 4,
+                              }}
+                            >
+                              {chain.iconUrl && (
+                                <img
+                                  alt={chain.name ?? 'Chain icon'}
+                                  src={chain.iconUrl}
+                                  style={{ width: 12, height: 12 }}
+                                />
+                              )}
+                            </div>
+                          )}
+                          {chain.name}
+                        </button>
+                        
+                        <div onClick={openAccountModal} style={{cursor: 'pointer'}}>
+                          <Button>
+                            {account.displayName}
+                            {account.displayBalance
+                              ? ` (${account.displayBalance})`
+                              : ''}
+                          </Button>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              );
+            }}
+          </ConnectButton.Custom>
+
+
+
+
+          {/* {!isLoginPage && !isAuth && <Button href="/login">Connect Wallet</Button>} */}
           {!isLoginPage && isAuth && (
             <div className={styles.user}>
               <span
