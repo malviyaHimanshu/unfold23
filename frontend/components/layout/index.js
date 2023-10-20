@@ -17,6 +17,46 @@ const Layout = ({ children }) => {
   const router = useRouter();
   const state = useContext(UserStateContext);
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
+  const openPopup = () => {
+    const popupWindow = window.open(
+      '',
+      'MetaMaskPopup',
+      'width=400,height=200,scrollbars=no,resizable=no'
+    );
+
+    // Create the content for the popup window
+    const popupContent = `
+      <html>
+        <head>
+          <title>Enter MetaMask Address</title>
+        </head>
+        <body>
+          <h2>Enter MetaMask Address</h2>
+          <input type="text" id="metaMaskAddress" placeholder="Enter MetaMask address">
+          <button onclick="sendInvite()">Send Invite</button>
+          <button onclick="closePopup()">Cancel</button>
+          
+          <script>
+            function sendInvite() {
+              const address = document.getElementById('metaMaskAddress').value;
+              // Handle sending the invite with the address
+              console.log('Sending invite to: ' + address);
+              // You can send the data to your React app or perform any required action.
+            }
+            
+            function closePopup() {
+              window.close();
+            }
+          </script>
+        </body>
+      </html>
+    `;
+
+    // Write the content to the popup window
+    popupWindow.document.open();
+    popupWindow.document.write(popupContent);
+    popupWindow.document.close();
+  };
 
   const isLoginPage = router.pathname === "/login";
   const isAuth = state.isAuth;
@@ -183,6 +223,7 @@ const Layout = ({ children }) => {
           )}
         </nav>
       </header>
+      <button className="flex align-right" onClick={openPopup}>Share</button>
       <main className={styles.content}>{children}</main>
       {/* <footer className={styles.footerBar}>
         <hr className={styles.hr} />

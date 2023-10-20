@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
-import a from "../mCard/sheeryImage.png";
+// import a from "../mCard/sheeryImage.png";
 const MCard = ({ data }) => {
   let notionHTML = "";
   data.rawData.forEach((block) => {
     if (block.tag === "img") {
       // Handle image block
-      notionHTML += `<br /><img src="${a}"alt="" /><br />`;
+      // notionHTML += `<br /><img src="${a}"alt="" /><br />`;
     } else {
       // Handle other block types (h1, h2, h3, p)
       notionHTML += `<${block.tag}>${block.html}</${block.tag}>`;
