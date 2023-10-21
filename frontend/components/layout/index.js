@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
 
   const [showPopup, setShowPopup] = useState(false);
   const [isCollab, setIsCollab] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const openPopup = () => {
     setShowPopup(true);
