@@ -12,6 +12,7 @@ import UserIcon from "../../images/user.svg";
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
+import Avatar from 'boring-avatars'
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -19,6 +20,8 @@ const Layout = ({ children }) => {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false);
 
   const [showPopup, setShowPopup] = useState(false);
+  const [isCollab, setIsCollab] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const openPopup = () => {
     setShowPopup(true);
@@ -29,6 +32,7 @@ const Layout = ({ children }) => {
 
   const sendInvite = () => {
     // send invite
+    closePopup();
   }
 
   const isLoginPage = router.pathname === "/login";
@@ -55,6 +59,12 @@ const Layout = ({ children }) => {
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
 
+      { isLoading && (
+        <div className={styles.loading}>
+          Loading...
+        </div>
+      )}
+
       { showPopup && (
         <div className={styles.sharePopupBg} style={{position: 'fixed', height: '100vh', width: '100vw', top: 0, right: 0, left: 0, bottom: 0, display: "grid", placeContent: 'center'}}>
           <div className={styles.popup}>
@@ -76,6 +86,26 @@ const Layout = ({ children }) => {
           </a>
         </div>
         <nav className={styles.nav}>
+
+          <div className={styles.collabProfiles}>
+            <div>
+              <Avatar 
+                size={35}
+                name="Smith"
+                variant="beam"
+                colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+              />
+            </div>
+            <div>
+              <Avatar 
+                size={35}
+                name="John Doe"
+                variant="beam"
+                colors={["#3B8183", "#FF9C5B", "#F5634A", "#ED303C", "#C20D90"]}
+              />
+            </div>
+          </div>
+
           <button className={styles.shareButton} onClick={openPopup}>Share</button>
           <a href="/marketplace" className={styles.marketplaceLink} style={{fontWeight: '700'}}>Marketplace</a>
           {/* <ConnectButton showBalance={true} /> */}
