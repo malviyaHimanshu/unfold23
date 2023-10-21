@@ -13,8 +13,12 @@ const MCard = ({ data }) => {
       notionHTML += `<${block.tag}>${block.html}</${block.tag}>`;
     }
   });
+
   return (
-    <Link href={`/marketplace/${data.id}`}>
+    <Link href={{
+        pathname: `/marketplace/${data.id}`,
+        query: data
+      }}>
       <div className={styles.card}>
         <div className={styles.Img}>
           {/* <img

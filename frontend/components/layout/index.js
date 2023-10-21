@@ -39,6 +39,7 @@ const Layout = ({ children }) => {
 
   const isLoginPage = router.pathname === "/login";
   const isAuth = state.isAuth;
+  const [showProfile, setShowProfile] = useState(true);
 
   const toggleContextMenu = () => {
     setIsContextMenuOpen(!isContextMenuOpen);
@@ -67,6 +68,12 @@ const Layout = ({ children }) => {
       }, 10000);
     }
   }, [count])
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShowProfile(true);
+  //   }, 10000);
+  // }, []);
 
   return (
     <div id="layoutRoot">
@@ -115,14 +122,17 @@ const Layout = ({ children }) => {
                 />
               </div>
             )}
-            <div>
-              <Avatar 
-                size={35}
-                name="John Doe"
-                variant="beam"
-                colors={["#3B8183", "#FF9C5B", "#F5634A", "#ED303C", "#C20D90"]}
-              />
-            </div>
+
+            {showProfile && (
+              <div>
+                <Avatar 
+                  size={35}
+                  name="John Doe"
+                  variant="beam"
+                  colors={["#3B8183", "#FF9C5B", "#F5634A", "#ED303C", "#C20D90"]}
+                />
+              </div>
+            )}
           </div>
 
           <button className={styles.shareButton} onClick={openPopup}>Share</button>

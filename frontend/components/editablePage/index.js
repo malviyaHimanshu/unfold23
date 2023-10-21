@@ -186,6 +186,11 @@ const EditablePage = ({ id, fetchedBlocks, err }) => {
           <p>It will be automatically deleted after 24 hours.</p>
         </Notice>
       )}
+      { blocks.length > 1 && (
+        <div className={styles.publish}>
+          <button className={styles.publishButton}>Publish as NFT</button>
+        </div>
+      )}
       <DragDropContext onDragEnd={onDragEndHandler}>
         <Droppable droppableId={id}>
           {(provided) => (

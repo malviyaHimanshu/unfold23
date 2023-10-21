@@ -164,3 +164,19 @@
       cursor: pointer;
   }
 }
+
+.publish {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.publishButton {
+  border: none;
+  background: $primary;
+  color: $secondary;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 1rem 2rem;
+  font-size: 14px;
+}
