@@ -81,6 +81,19 @@
   }
 }
 
+.collabProfiles {
+  padding: 0 1rem;
+  display: flex;
+  &>div {
+    padding: 0;
+    display: grid;
+    place-content: center;
+    border: solid 3px $secondary;
+    border-radius: 50%;
+    margin-left: -15px;
+  }
+}
+
 .marketplaceLink {
   height: 80px;
   padding: 1rem 2rem;
@@ -163,4 +176,19 @@
       font-family: $accent;
       cursor: pointer;
   }
+}
+
+
+// Loading
+.loading {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 7;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-content: center;
+  font-size: 24px;
+  font-weight: 700;
 }
