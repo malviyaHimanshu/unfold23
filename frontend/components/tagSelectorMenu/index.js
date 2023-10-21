@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import matchSorter from "match-sorter";
-
 import styles from "./styles.module.scss";
 
 const MENU_HEIGHT = 150;
@@ -31,6 +30,7 @@ const allowedTags = [
     label: "Image",
   },
   {
+    image: <img src="https://static.vecteezy.com/system/resources/previews/005/988/959/original/calendar-icon-free-vector.jpg" alt="Calendar" style={{height:"30px",width:"30px"}}/>,
     id: "calendar",
     tag: "cal",
     label: "Calendar",
@@ -100,6 +100,7 @@ const TagSelectorMenu = ({ position, closeMenu, handleSelection }) => {
         {tagList.map((tag, key) => {
           return (
             <div
+              style={{display:"flex",alignItems: 'center',gap:"10px"}}
               key={key}
               data-tag={tag.tag}
               className={
@@ -111,7 +112,7 @@ const TagSelectorMenu = ({ position, closeMenu, handleSelection }) => {
               tabIndex="0"
               onClick={() => handleSelection(tag.tag)}
             >
-              {tag.label}
+            {tag.image}{tag.label}
             </div>
           );
         })}

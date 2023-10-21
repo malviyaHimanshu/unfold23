@@ -1,9 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  window.ethereum.request({method:'eth_requestAccounts'}).then(res=>{ console.log(res) })
-  
+function App() {  
   return (
     <div className="App">
       <header className="App-header">
