@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
@@ -11,7 +11,7 @@ import GithubIcon from "../../images/github.svg";
 import UserIcon from "../../images/user.svg";
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-
+import ReactLoading from 'react-loading';
 import Avatar from 'boring-avatars'
 
 const Layout = ({ children }) => {
@@ -22,6 +22,7 @@ const Layout = ({ children }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [isCollab, setIsCollab] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [count, setCount] = useState(0);
 
   const openPopup = () => {
     setShowPopup(true);
@@ -31,7 +32,8 @@ const Layout = ({ children }) => {
   }
 
   const sendInvite = () => {
-    // send invite
+    showLoading();
+    setCount(count + 1);
     closePopup();
   }
 
@@ -51,6 +53,21 @@ const Layout = ({ children }) => {
     router.push(path);
   };
 
+  const showLoading = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, [1000]);
+  }
+
+  useEffect(() => {
+    if(count>0) {
+      setTimeout(() => {
+        setIsCollab(true);
+      }, 10000);
+    }
+  }, [count])
+
   return (
     <div id="layoutRoot">
       <Head>
@@ -61,7 +78,7 @@ const Layout = ({ children }) => {
 
       { isLoading && (
         <div className={styles.loading}>
-          Loading...
+          <ReactLoading type="spin" color="#303030" height={80} />
         </div>
       )}
 
@@ -88,14 +105,16 @@ const Layout = ({ children }) => {
         <nav className={styles.nav}>
 
           <div className={styles.collabProfiles}>
-            <div>
-              <Avatar 
-                size={35}
-                name="Smith"
-                variant="beam"
-                colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
-              />
-            </div>
+            {isCollab && (
+              <div>
+                <Avatar 
+                  size={35}
+                  name="Smith"
+                  variant="beam"
+                  colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+                />
+              </div>
+            )}
             <div>
               <Avatar 
                 size={35}
