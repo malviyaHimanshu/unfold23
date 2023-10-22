@@ -232,7 +232,6 @@ class EditableBlock extends React.Component {
 
   // Convert editableBlock shape based on the chosen tag
   // i.e. img = display <div><input /><img /></div> (input picker is hidden)
-  // i.e. every other tag = <ContentEditable /> with its tag and html content
   handleTagSelection(tag) {
     if (tag === "img") {
       this.setState({ ...this.state, tag: tag }, () => {
@@ -251,6 +250,14 @@ class EditableBlock extends React.Component {
           ref: this.contentEditable.current,
         });
       });
+    } else if (tag === "calendar") {
+      // Display an alert for "calendar"
+      alert("😅calenders are still under development");
+      this.closeTagSelectorMenu();
+    } else if (tag === "table") {
+      // Display an alert for "table"
+      alert("😅still building tables");
+      this.closeTagSelectorMenu();
     } else {
       if (this.state.isTyping) {
         // Update the tag and restore the html backup without the command
@@ -265,7 +272,7 @@ class EditableBlock extends React.Component {
       }
     }
   }
-
+  
   async handleImageUpload() {
     if (this.fileInput && this.fileInput.files[0]) {
       const pageId = this.props.pageId;

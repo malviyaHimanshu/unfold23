@@ -30,7 +30,12 @@ const allowedTags = [
     label: "Image",
   },
   {
-    image: <img src="https://static.vecteezy.com/system/resources/previews/005/988/959/original/calendar-icon-free-vector.jpg" alt="Calendar" style={{height:"30px",width:"30px"}}/>,
+    id: "Table",
+    tag: "table",
+    label: "Table",
+  },
+  {
+    // image: <img src="https://static.vecteezy.com/system/resources/previews/005/988/959/original/calendar-icon-free-vector.jpg" alt="Calendar" style={{height:"30px",width:"30px"}}/>,
     id: "calendar",
     tag: "cal",
     label: "Calendar",
