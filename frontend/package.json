@@ -15,6 +15,7 @@
     "@notionhq/client": "^2.2.13",
     "@rainbow-me/rainbowkit": "^1.1.2",
     "boring-avatars": "^1.10.1",
+    "ethers": "^5.7.2",
     "isomorphic-dompurify": "^0.7.0",
     "match-sorter": "^4.2.0",
     "next": "^13.5.6",

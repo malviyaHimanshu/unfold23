@@ -1,5 +1,6 @@
 import React ,{useState,useEffect}from "react";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/router";
 const imgSrc =
   "https://unsplash.com/photos/a-video-game-controller-flying-through-the-air-B6oBCNG7IK4";
 
@@ -16,29 +17,36 @@ const CardDetail = () => {
     // Increase the number by 1 when the up arrow is clicked
     setNumber(number + 1);
   };
-
+  
   const handleDecrement = () => {
     // Decrease the number by 1 when the down arrow is clicked
     setNumber(number - 1);
   };
+  
+
+
+  const router = useRouter();
+  const data = router.query;
+  console.log("this is the data : ", data);
+
+
   return (
     <div className={styles.main}>
       <div className={styles.cardPreview}>
         <h4>Page Preview</h4>
         <br />
         <div class="">
-          <h1>This is page title</h1>
-          <h2>This is heading</h2>
-          <h3>This is subheading</h3>
-          {/* <img src={a} alt="" /> */}
-          <p>This is paragraph</p>
-          <p></p>
+          <h1>Monthly Budget 💰</h1>
+          <p>Track your monthly budget with this</p>
+          <br/><h3>Plans to focus ✍🏻</h3>
+          <p>- Learn how to budget</p>
+          <p>- Save money</p>
+          <p>- Pay off debt</p>
         </div>
       </div>
       <div className={styles.cardDetails}>
-        <h4>About the collection</h4>
-        <br />
-        <h3 className="author">The author name</h3>
+        <h4>{data.header}</h4>
+        <h4 className="author">by himanhacks</h4><br />
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim laborum
           sed libero asperiores! Placeat eaque voluptates totam deserunt
@@ -77,7 +85,7 @@ const CardDetail = () => {
         </div>
           <br />
           <div className={styles.box}>
-            <h2 className="price">ETH 0.231</h2>
+            <h2 className="price">ETH 0.02</h2>
             <button className={styles.buy}>BUY NOW</button>
           </div>
         </div>
